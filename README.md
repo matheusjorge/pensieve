@@ -87,7 +87,7 @@ You can find more information about all commando running `pensieve --help` or `p
 
 ### Demo
 
-
+[![Watch the demo!](https://github.com/matheusjorge/penseive/blob/main/media/pensieve_demo.mov)](https://github.com/matheusjorge/penseive/blob/main/media/pensieve_demo.mov)
 
 ## Next steps
 
