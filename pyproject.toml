@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "pensieve-cli"
+version = "0.1.0"
+description = ""
+authors = ["Matheus Jorge <mat.jorge1@gmail.com>"]
+readme = "README.md"
+packages = [{include = "pensieve_cli"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+typer = {extras = ["all"], version = "^0.9.0"}
+pydantic = "^2.5.1"
+questionary = "^2.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+pensieve = "pensieve_cli.pensieve_cli:app"
