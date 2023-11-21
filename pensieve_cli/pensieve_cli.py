@@ -1,10 +1,15 @@
+import datetime
 import os
 import shutil
 import subprocess
 from typing import Annotated
+
 import typer
+import questionary
+
 from .autocomplete import autocomplete
 from .env import NOTES_PATH, EDITOR
+from .search import SearchMethod, Seacher
 
 app = typer.Typer()
 
@@ -60,5 +65,33 @@ def let_go(
     return typer.Exit(0)
 
    
+
+@app.command()
+def search(
+    by: Annotated[
+        SearchMethod,
+        typer.Option(
+            help="How to search the notes",
+        )
+    ] = SearchMethod.date
+):
+    files = Seacher.search(by)
+    if by is SearchMethod.date:
+        date = questionary.select(
+            "Which date do you want to select?",
+            choices=[d.isoformat() for d in files.keys()]
+        ).ask()
+        date = datetime.date.fromisoformat(date)
+
+        thought_name = questionary.select(
+            "Which file do you want",
+            choices=files[date]
+        ).ask()
+
+    FILE_PATH = NOTES_PATH / thought_name
+    subprocess.run(f"glow {FILE_PATH}", shell=True)
+    return typer.Exit(0)
+        
+
 if __name__ == "__main__":
     typer.run(app)
