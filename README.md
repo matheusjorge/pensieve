@@ -95,6 +95,6 @@ https://github.com/matheusjorge/penseive/assets/29483322/8b9ae9b9-4213-4eb6-b2c8
 
 ## Next steps
 
-- [] Implement search inside the files
-- [] Implement tag system
-- [] Implement embedding search
+- [ ] Implement search inside the files
+- [ ] Implement tag system
+- [ ] Implement embedding search
